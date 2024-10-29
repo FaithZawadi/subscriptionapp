@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use APP\Models\Subscriber;
-USE Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Mail;
+use App\Jobs\SendPostEmailJob;
 
 class PostController extends Controller
 {
