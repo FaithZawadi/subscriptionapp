@@ -21,11 +21,9 @@ class PostController extends Controller
         $post = Post::create($request->all());
         $subscribers = Subscriber::where('website', $request->website)->pluck('email');
         foreach($subscribers as $email){
-            Mail::raw($request->description, function($message) use($email,$request){
-                $message->to($email)
-                        ->subject($request->title);
-            });
+            dispatch(new SendPostEmailJob($email, $request->title, $request->description));
         }
+    
         return response()->json(['message'=>'Post all Created and Sent Emails!'], 200);
     }
 }
