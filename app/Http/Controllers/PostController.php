@@ -23,7 +23,7 @@ class PostController extends Controller
         foreach($subscribers as $email){
             Mail::raw($request->description, function($message) use($email,$request){
                 $message->to($email)
-                        ->subject($request->Str::title($value));
+                        ->subject($request->title);
             });
         }
         return response()->json(['message'=>'Post all Created and Sent Emails!'], 200);
