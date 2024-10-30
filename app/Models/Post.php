@@ -13,7 +13,7 @@ class Post extends Model
     {
         parent::boot();
         static::creating(function ($post){
-            $existingPost = self::where('website', $post->website)
+            $existingPost = self::where('Website', $post->website)
                                 ->where('title', $post->title) 
                                 ->first();
             if($existingPost)    {
